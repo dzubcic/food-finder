@@ -1,0 +1,16 @@
+form {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+mat-form-field, button {
+  margin: 5px;
+  width: 250px;
+  align-self: center;
+}
+
+div button {
+  margin-right: -70px;
+}

@@ -1,0 +1,9 @@
+<mat-toolbar>
+  <mat-toolbar-row>
+      <a class="linkWithoutDecoration" routerLink="/">Food Finder</a>
+    <div>
+      <span>{{(loggedIn$ | async)?.sub}}</span>
+      <button *ngIf="loggedIn$ | async" mat-button mat-flat-button (click)="logout()">Logout</button>
+    </div>
+  </mat-toolbar-row>
+</mat-toolbar>
