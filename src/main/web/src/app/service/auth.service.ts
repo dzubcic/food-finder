@@ -5,6 +5,7 @@ import { map } from 'rxjs/operators';
 import { Router } from '@angular/router';
 import {Login} from "../models/login.model";
 import {Register} from "ts-node";
+import {MatSnackBar} from "@angular/material/snack-bar";
 
 @Injectable({
   providedIn: 'root'
@@ -14,12 +15,10 @@ export class AuthService {
   private loggedInSubject$: BehaviorSubject<User> = new BehaviorSubject<User>(null);
   loggedIn$: Observable<User> = this.loggedInSubject$.asObservable();
 
-  constructor(private http: HttpClient, private router: Router) { }
+  constructor(private http: HttpClient, private router: Router, private snackBar: MatSnackBar) { }
 
   login(data: Login): Observable<any> {
     return this.http.post<{token: string}>('/user/login', data).pipe(map(resp => {
-      const user = extractUser(resp.token);
-      this.loggedInSubject$.next(user);
       localStorage.setItem('auth', resp.token);
       return resp;
     }));
@@ -29,9 +28,19 @@ export class AuthService {
     return this.http.post<void>('/user/register', data);
   }
 
+  getUser(): void {
+    this.http.get<any>('/user').subscribe(user => {
+      this.loggedInSubject$.next(user);
+    }, () => {
+      localStorage.removeItem('auth');
+      this.router.navigate(['']);
+      this.snackBar.open('User not found!', 'Close');
+    })
+  }
+
   loginExisting() {
     if (getToken()) {
-      this.loggedInSubject$.next(extractUser(getToken()));
+      this.getUser();
     }
   }
 
@@ -51,6 +60,7 @@ export function getToken(): string {
 }
 
 export interface User {
-  sub: string;
-  authority: string;
+  email: string;
+  lastName: string;
+  firstName: string;
 }

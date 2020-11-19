@@ -1,9 +1,13 @@
 <mat-toolbar>
   <mat-toolbar-row>
-      <a class="linkWithoutDecoration" routerLink="/">Food Finder</a>
+      <a class="linkWithoutDecoration" routerLink="/">FoodFinder</a>
     <div>
-      <span>{{(loggedIn$ | async)?.sub}}</span>
-      <button *ngIf="loggedIn$ | async" mat-button mat-flat-button (click)="logout()">Logout</button>
+      <span *ngIf="(loggedIn$ | async)">
+        <fa-icon [icon]="faUser"></fa-icon>
+        {{ (loggedIn$ | async).firstName }}
+        {{ (loggedIn$ | async).lastName }}
+      </span>
+      <button *ngIf="loggedIn$ | async" mat-button mat-stroked-button (click)="logout()" color="warn">Logout</button>
     </div>
   </mat-toolbar-row>
 </mat-toolbar>

@@ -1,0 +1,38 @@
+<button mat-button mat-raised-button color="primary" routerLink="/restaurants">Restaurants list</button>
+
+<div>
+  <h2>Add a new restaurant</h2>
+  <form [formGroup]="restaurantForm" autocomplete="off">
+    <br>
+    <mat-form-field>
+      <mat-label>Name</mat-label>
+      <input matInput formControlName="name">
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Address</mat-label>
+      <input matInput formControlName="address">
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Category</mat-label>
+      <mat-select formControlName="category">
+        <mat-option *ngFor="let cat of categories" [value]="cat">
+          {{ cat }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Description</mat-label>
+      <textarea matInput formControlName="description"></textarea>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Contact</mat-label>
+      <textarea matInput formControlName="contact"></textarea>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Working time</mat-label>
+      <textarea matInput formControlName="workTime"></textarea>
+    </mat-form-field>
+
+    <button color="primary" [disabled]="restaurantForm.invalid" type="submit" mat-button mat-stroked-button>Add</button>
+  </form>
+</div>

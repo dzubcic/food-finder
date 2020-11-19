@@ -20,6 +20,11 @@ import {MAT_SNACK_BAR_DEFAULT_OPTIONS, MatSnackBarModule} from "@angular/materia
 import {MatInputModule} from "@angular/material/input";
 import {TokenInterceptor} from "./blocks/token.interceptor";
 import {MatButtonModule} from "@angular/material/button";
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { RestaurantsComponent } from './main/restaurants/restaurants.component';
+import { AddRestaurantComponent } from './main/restaurants/add-restaurant/add-restaurant.component';
+import {MatOptionModule} from "@angular/material/core";
+import {MatSelectModule} from "@angular/material/select";
 
 @NgModule({
   declarations: [
@@ -27,7 +32,9 @@ import {MatButtonModule} from "@angular/material/button";
     NavBarComponent,
     LoginComponent,
     RegisterComponent,
-    HomeComponent
+    HomeComponent,
+    RestaurantsComponent,
+    AddRestaurantComponent
   ],
   imports: [
     BrowserModule,
@@ -40,7 +47,10 @@ import {MatButtonModule} from "@angular/material/button";
     MatButtonModule,
     HttpClientModule,
     MatSnackBarModule,
-    MatInputModule
+    MatInputModule,
+    FontAwesomeModule,
+    MatOptionModule,
+    MatSelectModule
   ],
   providers: [
     { provide: MAT_FORM_FIELD_DEFAULT_OPTIONS , useValue: { floatLabel: 'always', appearance: 'outline' }},

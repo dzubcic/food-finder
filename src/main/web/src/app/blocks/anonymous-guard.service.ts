@@ -9,6 +9,7 @@ export class AnonymousGuardService implements CanActivate {
 
   canActivate() {
     if (getToken()) {
+      this.router.navigate(['restaurants']);
       return false;
     }
     return true;

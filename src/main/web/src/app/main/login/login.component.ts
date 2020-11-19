@@ -28,6 +28,8 @@ export class LoginComponent implements OnInit {
     this.authService.login(this.loginForm.value).subscribe(
       () => {
         this.snackBar.dismiss();
+        this.authService.getUser();
+        this.router.navigate(['restaurants']);
       },
       () => this.snackBar.open('Wrong username or password!', 'Close'));
   }

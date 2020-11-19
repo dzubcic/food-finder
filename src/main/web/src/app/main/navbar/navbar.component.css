@@ -9,3 +9,40 @@ button {
 .linkWithoutDecoration {
   text-decoration: none;
 }
+
+div {
+  display: flex;
+  align-items: center;
+}
+
+span {
+  width: 130px;
+  display: flex;
+  cursor: pointer;
+  font-size: 17px;
+  font-weight: 600;
+  border-radius: 10px;
+  align-items: center;
+  justify-content: space-evenly;
+  border: 1px solid rgb(85, 26, 139);
+}
+
+fa-icon {
+  margin-top: 3px;
+  font-size: 13px;
+  color: rgb(85, 26, 139);
+}
+
+a {
+  font-size: 52px;
+  font-weight: 900;
+  text-shadow:
+    -0.0075em 0.0075em 0 #ec9688,
+    0.005em 0.005em 0 #ec9688,
+    0.01em 0.01em 0 #ec9688,
+    0.015em 0.015em #ec9688,
+    0.02em 0.02em 0 #ec9688,
+    0.025em 0.025em 0 #ec9688,
+    0.03em 0.03em 0 #ec9688,
+    0.035em 0.035em 0 #ec9688;
+}
