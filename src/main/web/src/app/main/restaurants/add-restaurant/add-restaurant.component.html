@@ -1,8 +1,8 @@
-<button mat-button mat-raised-button color="primary" routerLink="/restaurants">Restaurants list</button>
+<button class="link" mat-button mat-raised-button color="primary" routerLink="/restaurants">Restaurants list</button>
 
 <div>
   <h2>Add a new restaurant</h2>
-  <form [formGroup]="restaurantForm" autocomplete="off">
+  <form [formGroup]="restaurantForm" autocomplete="off" (ngSubmit)="submit()">
     <br>
     <mat-form-field>
       <mat-label>Name</mat-label>
@@ -15,7 +15,7 @@
     <mat-form-field>
       <mat-label>Category</mat-label>
       <mat-select formControlName="category">
-        <mat-option *ngFor="let cat of categories" [value]="cat">
+        <mat-option *ngFor="let cat of categories" [value]="cat.toUpperCase()">
           {{ cat }}
         </mat-option>
       </mat-select>
@@ -31,6 +31,14 @@
     <mat-form-field>
       <mat-label>Working time</mat-label>
       <textarea matInput formControlName="workTime"></textarea>
+    </mat-form-field>
+    <mat-form-field class="upload" (click)="fileInput.click()">
+      <mat-label *ngIf="selectedFile.name; else newFile">{{ selectedFile?.name }}</mat-label>
+      <ng-template #newFile>
+        <mat-label>Choose file</mat-label>
+      </ng-template>
+      <input [placeholder]="'Click to upload' + (selectedFile ? ' other' : '') + ' image'" matInput readonly="readonly">
+      <input hidden (change)="selectFile($event)" #fileInput type="file" id="file" accept="image/png, image/jpeg">
     </mat-form-field>
 
     <button color="primary" [disabled]="restaurantForm.invalid" type="submit" mat-button mat-stroked-button>Add</button>

@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
-import {AuthService, User} from "../../service/auth.service";
+import {Component, OnInit} from '@angular/core';
+import {Observable} from 'rxjs';
+import {AuthService} from "../../service/auth.service";
 import {faUser} from "@fortawesome/free-solid-svg-icons";
+import {User} from "../../models/user.model";
 
 @Component({
   selector: 'app-navbar',

@@ -1,1 +1,5 @@
 <button mat-button mat-raised-button color="primary" routerLink="/add-restaurant">Add restaurant</button>
+
+<div class="category" *ngFor="let category of restaurants | keyvalue">
+  <h2>{{ category.key }}</h2>
+</div>

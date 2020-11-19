@@ -25,6 +25,8 @@ import { RestaurantsComponent } from './main/restaurants/restaurants.component';
 import { AddRestaurantComponent } from './main/restaurants/add-restaurant/add-restaurant.component';
 import {MatOptionModule} from "@angular/material/core";
 import {MatSelectModule} from "@angular/material/select";
+import {RestaurantService} from "./service/restaurant.service";
+import { RestaurantComponent } from './main/restaurants/restaurant/restaurant.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +36,8 @@ import {MatSelectModule} from "@angular/material/select";
     RegisterComponent,
     HomeComponent,
     RestaurantsComponent,
-    AddRestaurantComponent
+    AddRestaurantComponent,
+    RestaurantComponent
   ],
   imports: [
     BrowserModule,
@@ -56,7 +59,7 @@ import {MatSelectModule} from "@angular/material/select";
     { provide: MAT_FORM_FIELD_DEFAULT_OPTIONS , useValue: { floatLabel: 'always', appearance: 'outline' }},
     { provide: MAT_SNACK_BAR_DEFAULT_OPTIONS, useValue: { duration: 5000 }},
     { provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true },
-    AnonymousGuardService, AuthGuardService, AuthService
+    AnonymousGuardService, AuthGuardService, AuthService, RestaurantService
   ],
   bootstrap: [AppComponent]
 })

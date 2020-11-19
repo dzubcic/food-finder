@@ -1,10 +1,11 @@
-import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
+import {NgModule} from '@angular/core';
+import {RouterModule, Routes} from '@angular/router';
 import {HomeComponent} from "./main/home/home.component";
 import {AnonymousGuardService} from "./blocks/anonymous-guard.service";
 import {RestaurantsComponent} from "./main/restaurants/restaurants.component";
 import {AuthGuardService} from "./blocks/auth-guard.service";
 import {AddRestaurantComponent} from "./main/restaurants/add-restaurant/add-restaurant.component";
+import {RestaurantComponent} from "./main/restaurants/restaurant/restaurant.component";
 
 const routes: Routes = [
   {
@@ -15,6 +16,11 @@ const routes: Routes = [
   {
     path: 'restaurants',
     component: RestaurantsComponent,
+    canActivate: [AuthGuardService]
+  },
+  {
+    path: 'restaurant/:id',
+    component: RestaurantComponent,
     canActivate: [AuthGuardService]
   },
   {

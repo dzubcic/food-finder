@@ -6,6 +6,7 @@ import { Router } from '@angular/router';
 import {Login} from "../models/login.model";
 import {Register} from "ts-node";
 import {MatSnackBar} from "@angular/material/snack-bar";
+import {User} from "../models/user.model";
 
 @Injectable({
   providedIn: 'root'
@@ -57,10 +58,4 @@ export function extractUser(token: string): User {
 
 export function getToken(): string {
   return localStorage.getItem('auth');
-}
-
-export interface User {
-  email: string;
-  lastName: string;
-  firstName: string;
 }
