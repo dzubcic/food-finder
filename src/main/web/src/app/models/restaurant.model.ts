@@ -1,4 +1,7 @@
+import {User} from "./user.model";
+
 export interface Restaurant {
+  createdBy: User;
   id: number;
   name: string;
   image: string;

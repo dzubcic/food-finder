@@ -3,5 +3,7 @@ export const categories = [
   'Burger',
   'Dinner',
   'Pub',
-  'Traditional'
+  'Traditional',
+  'Mexican',
+  'Steak'
 ]

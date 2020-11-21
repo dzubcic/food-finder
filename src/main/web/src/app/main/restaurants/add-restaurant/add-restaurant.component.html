@@ -1,4 +1,4 @@
-<button class="link" mat-button mat-raised-button color="primary" routerLink="/restaurants">Restaurants list</button>
+<button class="link" mat-button mat-raised-button color="primary" routerLink="/restaurants">All restaurants</button>
 
 <div>
   <h2>Add a new restaurant</h2>
@@ -33,7 +33,7 @@
       <textarea matInput formControlName="workTime"></textarea>
     </mat-form-field>
     <mat-form-field class="upload" (click)="fileInput.click()">
-      <mat-label *ngIf="selectedFile.name; else newFile">{{ selectedFile?.name }}</mat-label>
+      <mat-label *ngIf="selectedFile?.name; else newFile">{{ selectedFile?.name }} &#10004;</mat-label>
       <ng-template #newFile>
         <mat-label>Choose file</mat-label>
       </ng-template>

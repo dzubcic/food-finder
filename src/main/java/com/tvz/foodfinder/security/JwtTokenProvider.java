@@ -7,8 +7,6 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
-import org.springframework.security.core.userdetails.User;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Component;
 
 import javax.servlet.http.HttpServletRequest;
@@ -22,7 +20,6 @@ public class JwtTokenProvider {
 
     private static final String CLAIM_KEY_SUB = "sub";
     private static final String CLAIM_KEY_CREATED = "created";
-    private static final String CLAIM_KEY_AUTHORITY = "authority";
 
     private final JwtUserDetails jwtUserDetails;
 
@@ -37,11 +34,10 @@ public class JwtTokenProvider {
     private Long expiration;
 
     public String generateToken(Authentication authentication) {
-        User user = (User) authentication.getPrincipal();
+        UserDetails user = (UserDetails) authentication.getPrincipal();
         Map<String, Object> claims = new HashMap<>();
         claims.put(CLAIM_KEY_SUB, user.getUsername());
         claims.put(CLAIM_KEY_CREATED, new Date());
-        claims.put(CLAIM_KEY_AUTHORITY, user.getAuthorities().iterator().next());
         return generateToken(claims);
     }
 

@@ -1,0 +1,40 @@
+* {
+  overflow: hidden;
+}
+
+.link {
+  right: 50px;
+  bottom: 70px;
+  position: fixed;
+}
+
+.wrapper {
+  width: 70%;
+  max-width: 1700px;
+  margin: 30px auto;
+}
+
+img {
+  float: left;
+  width: 450px;
+  height: 330px;
+  object-fit: cover;
+  border-radius: 5px;
+  border: 2px solid #300041;
+}
+
+.info {
+  width: 700px;
+  line-height: 28px;
+  text-align: center;
+  display: inline-block;
+}
+
+.info p {
+  font-size: 20px;
+}
+
+h1 {
+  font-size: 35px;
+  font-weight: bold;
+}

@@ -1,5 +1,59 @@
+* {
+  overflow: hidden;
+}
+
 button {
   right: 50px;
   bottom: 70px;
   position: fixed;
+}
+
+.category {
+  margin-bottom: 30px;
+}
+
+h2 {
+  width: 200px;
+  color: white;
+  font-weight: bold;
+  text-align: center;
+  border-radius: 20px;
+  background-color: #320d3e;
+}
+
+.wrapper {
+  width: 80%;
+  max-width: 1700px;
+  margin: 30px auto;
+}
+
+.restaurant {
+  padding: 0;
+  margin: 10px;
+  width: 340px;
+  height: 260px;
+  text-align: center;
+  border-radius: 10px ;
+  display: inline-block;
+}
+
+.restaurant:hover {
+  cursor: pointer;
+  box-shadow: 0 3px 0 4px #dddddd;
+}
+
+img {
+  width: 100%;
+  height: 160px;
+  object-fit: cover;
+  border-bottom: 1px solid #e9e9e9;
+}
+
+h1, h4 {
+  margin-bottom: 5px;
+}
+
+p {
+  padding-top: 3px;
+  border-top: 1px dashed #bebebe;
 }

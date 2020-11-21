@@ -13,6 +13,7 @@ public class RestaurantMapper {
                 .name(restaurant.getName())
                 .address(restaurant.getAddress())
                 .category(restaurant.getCategory())
+                .description(restaurant.getDescription())
                 .image(restaurant.getImage())
                 .build();
     }

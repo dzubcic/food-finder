@@ -1,5 +1,15 @@
 <button mat-button mat-raised-button color="primary" routerLink="/add-restaurant">Add restaurant</button>
 
-<div class="category" *ngFor="let category of restaurants | keyvalue">
-  <h2>{{ category.key }}</h2>
+<div class="wrapper">
+  <div class="category" *ngFor="let category of restaurants | keyvalue">
+    <h2>{{ category.key }}</h2>
+    <mat-card class="restaurant link" *ngFor="let restaurant of category.value" [routerLink]="'/restaurant/' + restaurant.id">
+      <img [src]="restaurant.image">
+      <mat-card-content>
+        <h1>{{ restaurant.name }}</h1>
+        <h4>{{ restaurant.description }}</h4>
+        <p>{{ restaurant.address }}</p>
+      </mat-card-content>
+    </mat-card>
+  </div>
 </div>

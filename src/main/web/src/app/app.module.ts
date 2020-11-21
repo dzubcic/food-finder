@@ -27,6 +27,7 @@ import {MatOptionModule} from "@angular/material/core";
 import {MatSelectModule} from "@angular/material/select";
 import {RestaurantService} from "./service/restaurant.service";
 import { RestaurantComponent } from './main/restaurants/restaurant/restaurant.component';
+import {MatCardModule} from "@angular/material/card";
 
 @NgModule({
   declarations: [
@@ -53,7 +54,8 @@ import { RestaurantComponent } from './main/restaurants/restaurant/restaurant.co
     MatInputModule,
     FontAwesomeModule,
     MatOptionModule,
-    MatSelectModule
+    MatSelectModule,
+    MatCardModule
   ],
   providers: [
     { provide: MAT_FORM_FIELD_DEFAULT_OPTIONS , useValue: { floatLabel: 'always', appearance: 'outline' }},

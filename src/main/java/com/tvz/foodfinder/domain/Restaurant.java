@@ -4,6 +4,8 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.data.annotation.CreatedBy;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import javax.persistence.*;
 
@@ -13,6 +15,7 @@ import javax.persistence.*;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
+@EntityListeners(AuditingEntityListener.class)
 public class Restaurant {
 
     @Id
@@ -20,7 +23,7 @@ public class Restaurant {
     @Column
     private Long id;
 
-    @Column
+    @Column(name = "title")
     private String name;
 
     @Column
@@ -41,5 +44,10 @@ public class Restaurant {
 
     @Column(columnDefinition = "CLOB")
     private String image;
+
+    @ManyToOne
+    @CreatedBy
+    @JoinColumn(name = "user_id")
+    private User createdBy;
 
 }

@@ -1,2 +1,14 @@
-<h1>{{ data?.name }}</h1>
-<img [src]="data?.image">
+<button class="link" mat-button mat-raised-button color="primary" routerLink="/restaurants">All restaurants</button>
+
+<div class="wrapper" *ngIf="data">
+  <img [src]="data.image">
+  <div class="info">
+    <h1>{{ data.name }}</h1>
+    <p>{{ data.description }}</p>
+    <p>Category: <b>{{ data.category }}</b></p>
+    <p>Address: <b>{{ data.address }}</b></p>
+    <p>Working time: <b>{{ data.workTime }}</b></p>
+    <p>Contact: <b>{{ data.contact }}</b></p>
+    <p>Added by: <b>{{ data.createdBy.firstName }}{{ data.createdBy.lastName }}</b></p>
+  </div>
+</div>

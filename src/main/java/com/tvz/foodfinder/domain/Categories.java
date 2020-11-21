@@ -1,5 +1,5 @@
 package com.tvz.foodfinder.domain;
 
 public enum Categories {
-    PIZZA, BURGER, PUB, TRADITIONAL, DINNER
+    PIZZA, BURGER, PUB, TRADITIONAL, DINNER, MEXICAN, STEAK
 }

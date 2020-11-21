@@ -19,7 +19,7 @@ export class RestaurantsComponent implements OnInit {
   ngOnInit(): void {
     this.restaurantService.getAllRestaurants().subscribe((res: Restaurant[]) => {
       res.forEach(r => {
-        this.restaurants.has(r.category) ? this.restaurants.set(r.category, [...this.restaurants[r.category], r]) : this.restaurants.set(r.category, [r]);
+        this.restaurants.has(r.category) ? this.restaurants.set(r.category, [...this.restaurants.get(r.category), r]) : this.restaurants.set(r.category, [r]);
       })
     });
   }

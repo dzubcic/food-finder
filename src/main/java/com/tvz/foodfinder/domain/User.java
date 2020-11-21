@@ -1,5 +1,7 @@
 package com.tvz.foodfinder.domain;
 
+import com.tvz.foodfinder.domain.dto.RegisterDTO;
+import com.tvz.foodfinder.domain.dto.UserDTO;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -31,5 +33,14 @@ public class User {
 
     @Column
     private String lastName;
+
+    public UserDTO toDTO() {
+        return UserDTO.builder()
+                .id(this.getId())
+                .email(this.getEmail())
+                .firstName(this.getFirstName())
+                .lastName(this.getLastName())
+                .build();
+    }
 
 }
