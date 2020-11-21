@@ -7,7 +7,7 @@ import {NavBarComponent} from "./main/navbar/navbar.component";
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {LoginComponent} from "./main/login/login.component";
 import {RegisterComponent} from "./main/register/register.component";
-import {ReactiveFormsModule} from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {MAT_FORM_FIELD_DEFAULT_OPTIONS, MatFormFieldModule} from "@angular/material/form-field";
 import {MatToolbarModule} from "@angular/material/toolbar";
 import {HomeComponent} from './main/home/home.component';
@@ -28,6 +28,7 @@ import {MatSelectModule} from "@angular/material/select";
 import {RestaurantService} from "./service/restaurant.service";
 import { RestaurantComponent } from './main/restaurants/restaurant/restaurant.component';
 import {MatCardModule} from "@angular/material/card";
+import { ReviewsComponent } from './main/reviews/reviews.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,8 @@ import {MatCardModule} from "@angular/material/card";
     HomeComponent,
     RestaurantsComponent,
     AddRestaurantComponent,
-    RestaurantComponent
+    RestaurantComponent,
+    ReviewsComponent
   ],
   imports: [
     BrowserModule,
@@ -55,7 +57,8 @@ import {MatCardModule} from "@angular/material/card";
     FontAwesomeModule,
     MatOptionModule,
     MatSelectModule,
-    MatCardModule
+    MatCardModule,
+    FormsModule
   ],
   providers: [
     { provide: MAT_FORM_FIELD_DEFAULT_OPTIONS , useValue: { floatLabel: 'always', appearance: 'outline' }},

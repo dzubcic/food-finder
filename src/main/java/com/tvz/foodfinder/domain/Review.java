@@ -4,6 +4,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.CreatedBy;
 import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
@@ -12,6 +13,7 @@ import java.time.LocalDateTime;
 @Table
 @Data
 @NoArgsConstructor
+@EntityListeners(AuditingEntityListener.class)
 public class Review {
 
     @Id
@@ -19,19 +21,19 @@ public class Review {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String comment;
+    private String review;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "restaurant_id")
+    private Restaurant restaurant;
 
     @ManyToOne
     @CreatedBy
     @JoinColumn(name = "user_id")
-    private User user;
-
-    @ManyToOne
-    @JoinColumn(name = "restaurant_id")
-    private Restaurant restaurant;
+    private User createdBy;
 
     @Column
     @CreatedDate
-    private LocalDateTime postedAt;
+    private LocalDateTime createdAt;
 
 }

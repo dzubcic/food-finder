@@ -18,6 +18,10 @@ export class AuthService {
 
   constructor(private http: HttpClient, private router: Router, private snackBar: MatSnackBar) { }
 
+  get loggedIn(): User {
+    return this.loggedInSubject$.getValue();
+  }
+
   login(data: Login): Observable<any> {
     return this.http.post<{token: string}>('/user/login', data).pipe(map(resp => {
       localStorage.setItem('auth', resp.token);

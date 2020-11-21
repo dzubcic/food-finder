@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Observable} from "rxjs";
-import {Restaurant} from "../models/restaurant.model";
+import {Restaurant, RestaurantDTO} from "../models/restaurant.model";
 
 @Injectable({
   providedIn: 'root'
@@ -19,8 +19,8 @@ export class RestaurantService {
     return this.http.get<Restaurant>(`${this.resourceUrl}/${id}`);
   }
 
-  getAllRestaurants(): Observable<any> {
-    return this.http.get(this.resourceUrl);
+  getAllRestaurants(): Observable<RestaurantDTO[]> {
+    return this.http.get<RestaurantDTO[]>(this.resourceUrl);
   }
 
   deleteRestaurant(id: number) {

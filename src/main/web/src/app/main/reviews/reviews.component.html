@@ -1,0 +1,24 @@
+<div class="wrapper">
+  <div class="review new" *ngIf="!hasPosted">
+    <p>
+      <span>{{ loggedIn?.firstName }} {{ loggedIn?.lastName }}</span>
+      <br>{{ currentDateTime | date: 'dd.MM.YYYY. HH:mm:ss' }}
+    </p>
+    <mat-form-field>
+      <mat-label>New review</mat-label>
+      <textarea rows="2" matInput [(ngModel)]="newReview"></textarea>
+    </mat-form-field>
+    <button (click)="addReview()" mat-button mat-stroked-button color="primary">Post review</button>
+  </div>
+  <div class="review" *ngFor="let review of reviews">
+    <p>
+      <span>{{ review.createdBy.firstName }} {{ review.createdBy.lastName }}</span>
+      <br>{{ review.createdAt | date: 'dd.MM.YYYY. HH:mm:ss' }}
+    </p>
+    <mat-form-field>
+      <mat-label>Review</mat-label>
+      <textarea disabled rows="2" matInput [value]="review.review"></textarea>
+    </mat-form-field>
+    <button *ngIf="loggedIn.email === review.createdBy.email" (click)="deleteReview(review.id)" mat-button mat-stroked-button color="warn">Delete review</button>
+  </div>
+</div>

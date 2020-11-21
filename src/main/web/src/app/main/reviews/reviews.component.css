@@ -1,0 +1,41 @@
+.wrapper {
+  width: 100%;
+  height: 100%;
+  max-width: 1700px;
+  margin: 50px auto;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+mat-form-field {
+  width: 500px;
+}
+
+.review button {
+  top: -10px;
+  left: 20px;
+  position: relative;
+}
+
+textarea {
+  height: 35px;
+  margin-right: 20px;
+  min-height: 35px;
+  max-height: 35px;
+}
+
+p {
+  display: inline-block;
+  position: relative;
+  right: 10px;
+}
+
+p span {
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.new {
+  margin-left: 105px;
+}
