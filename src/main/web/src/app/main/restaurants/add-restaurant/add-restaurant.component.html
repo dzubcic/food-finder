@@ -9,6 +9,10 @@
       <input matInput formControlName="name">
     </mat-form-field>
     <mat-form-field>
+      <mat-label>Description</mat-label>
+      <input matInput formControlName="description">
+    </mat-form-field>
+    <mat-form-field>
       <mat-label>Address</mat-label>
       <input matInput formControlName="address">
     </mat-form-field>
@@ -21,16 +25,12 @@
       </mat-select>
     </mat-form-field>
     <mat-form-field>
-      <mat-label>Description</mat-label>
-      <textarea matInput formControlName="description"></textarea>
-    </mat-form-field>
-    <mat-form-field>
       <mat-label>Contact</mat-label>
-      <textarea matInput formControlName="contact"></textarea>
+      <input matInput formControlName="contact">
     </mat-form-field>
     <mat-form-field>
       <mat-label>Working time</mat-label>
-      <textarea matInput formControlName="workTime"></textarea>
+      <input matInput formControlName="workTime">
     </mat-form-field>
     <mat-form-field class="upload" (click)="fileInput.click()">
       <mat-label *ngIf="selectedFile?.name; else newFile">{{ selectedFile?.name }} &#10004;</mat-label>

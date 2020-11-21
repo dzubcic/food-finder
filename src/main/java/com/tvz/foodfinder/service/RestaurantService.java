@@ -11,5 +11,7 @@ public interface RestaurantService {
 
     Restaurant getRestaurant(Long id);
 
+    void deleteRestaurant(Long id);
+
     List<RestaurantDTO> getAll();
 }

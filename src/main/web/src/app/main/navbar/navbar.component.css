@@ -16,7 +16,9 @@ div {
 }
 
 span {
-  width: 130px;
+  min-width: 130px;
+  max-width: 200px;
+  overflow: hidden;
   display: flex;
   cursor: pointer;
   font-size: 17px;
@@ -24,7 +26,6 @@ span {
   border-radius: 10px;
   align-items: center;
   justify-content: space-evenly;
-  border: 1px solid rgb(85, 26, 139);
 }
 
 fa-icon {

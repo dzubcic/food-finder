@@ -30,6 +30,12 @@ public class RestaurantController {
         return restaurant != null ? ResponseEntity.ok(restaurant) : ResponseEntity.notFound().build();
     }
 
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deleteRestaurant(@PathVariable Long id) {
+        restaurantService.deleteRestaurant(id);
+        return ResponseEntity.ok().build();
+    }
+
     @GetMapping
     public ResponseEntity<List<RestaurantDTO>> getAllRestaurants() {
         List<RestaurantDTO> restaurants = restaurantService.getAll();

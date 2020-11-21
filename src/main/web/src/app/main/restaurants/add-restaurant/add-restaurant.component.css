@@ -10,10 +10,15 @@
 
 div {
   width: 340px;
-  margin: 50px auto;
+  margin: 40px auto;
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+h2 {
+  color: #4f4f4f;
+  font-weight: 600;
 }
 
 form {
@@ -22,8 +27,4 @@ form {
 
 mat-form-field {
   width: 100%;
-}
-
-textarea {
-  height: 45px;
 }

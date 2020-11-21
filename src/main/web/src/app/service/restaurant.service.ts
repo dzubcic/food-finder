@@ -1,7 +1,5 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
-import {Router} from '@angular/router';
-import {MatSnackBar} from "@angular/material/snack-bar";
 import {Observable} from "rxjs";
 import {Restaurant} from "../models/restaurant.model";
 
@@ -9,22 +7,24 @@ import {Restaurant} from "../models/restaurant.model";
   providedIn: 'root'
 })
 export class RestaurantService {
+  resourceUrl = '/restaurant';
 
-  constructor(private http: HttpClient, private router: Router, private snackBar: MatSnackBar) { }
+  constructor(private http: HttpClient) { }
 
-  addRestaurant(formData: any) {
-    this.http.post<number>('/restaurant', formData).subscribe(id => {
-      this.router.navigate([`/restaurant/${id}`]);
-      this.snackBar.open('Restaurant added successfully!', 'Close');
-    })
+  addRestaurant(formData: any): Observable<number> {
+    return this.http.post<number>(this.resourceUrl, formData);
   }
 
   getRestaurant(id: number): Observable<Restaurant> {
-    return this.http.get<Restaurant>(`/restaurant/${id}`);
+    return this.http.get<Restaurant>(`${this.resourceUrl}/${id}`);
   }
 
   getAllRestaurants(): Observable<any> {
-    return this.http.get('/restaurant');
+    return this.http.get(this.resourceUrl);
+  }
+
+  deleteRestaurant(id: number) {
+    return this.http.delete(`${this.resourceUrl}/${id}`)
   }
 
 }

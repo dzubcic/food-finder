@@ -4,6 +4,7 @@
   <div class="category" *ngFor="let category of restaurants | keyvalue">
     <h2>{{ category.key }}</h2>
     <mat-card class="restaurant link" *ngFor="let restaurant of category.value" [routerLink]="'/restaurant/' + restaurant.id">
+      <span *ngIf="(loggedIn$ | async).email === restaurant.createdBy" (click)="$event.stopPropagation(); removeRestaurant(restaurant)" class="remove">&#x2716;</span>
       <img [src]="restaurant.image">
       <mat-card-content>
         <h1>{{ restaurant.name }}</h1>

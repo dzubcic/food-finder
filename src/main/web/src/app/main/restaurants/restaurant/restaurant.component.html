@@ -9,6 +9,7 @@
     <p>Address: <b>{{ data.address }}</b></p>
     <p>Working time: <b>{{ data.workTime }}</b></p>
     <p>Contact: <b>{{ data.contact }}</b></p>
-    <p>Added by: <b>{{ data.createdBy.firstName }}{{ data.createdBy.lastName }}</b></p>
+    <p>Added by: <b>{{ data.createdBy.firstName }} {{ data.createdBy.lastName }}</b></p>
+    <p>Added at: <b>{{ data.createdAt | date: 'dd.MM.YYYY. HH:mm' }}</b></p>
   </div>
 </div>

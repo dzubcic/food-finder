@@ -34,6 +34,11 @@ public class RestaurantServiceImpl implements RestaurantService {
     }
 
     @Override
+    public void deleteRestaurant(Long id) {
+        restaurantRepository.deleteById(id);
+    }
+
+    @Override
     public List<RestaurantDTO> getAll() {
         return restaurantRepository.findAll().stream().map(restaurantMapper::toDTO).collect(Collectors.toList());
     }

@@ -20,4 +20,6 @@ public class RestaurantDTO {
 
     private String image;
 
+    private String createdBy;
+
 }
