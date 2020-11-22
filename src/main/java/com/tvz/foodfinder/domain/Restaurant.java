@@ -1,5 +1,6 @@
 package com.tvz.foodfinder.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -10,6 +11,7 @@ import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Entity
 @Table
@@ -46,6 +48,10 @@ public class Restaurant {
 
     @Column(columnDefinition = "CLOB")
     private String image;
+
+    @JsonIgnore
+    @OneToMany(mappedBy = "restaurant", orphanRemoval = true)
+    private List<Review> reviews;
 
     @ManyToOne
     @CreatedBy

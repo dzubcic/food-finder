@@ -15,6 +15,7 @@ public class RestaurantMapper {
                 .category(restaurant.getCategory())
                 .description(restaurant.getDescription())
                 .image(restaurant.getImage())
+                .reviewCount(restaurant.getReviews().size())
                 .createdBy(restaurant.getCreatedBy().getEmail())
                 .build();
     }

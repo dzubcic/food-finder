@@ -10,18 +10,26 @@
 
 div {
   width: 340px;
-  margin: 40px auto;
+  margin: 15px auto;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
 h2 {
+  display: flex;
   color: #4f4f4f;
   font-weight: 600;
 }
 
+h2 img {
+  width: 30px;
+  height: 30px;
+  margin: 0 5px;
+}
+
 form {
+  margin-top: -20px;
   text-align: center;
 }
 

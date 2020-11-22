@@ -22,4 +22,6 @@ public class RestaurantDTO {
 
     private String createdBy;
 
+    private int reviewCount;
+
 }

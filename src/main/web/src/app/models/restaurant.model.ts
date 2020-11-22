@@ -21,4 +21,5 @@ export interface RestaurantDTO {
   category: string;
   createdBy: string;
   description: string;
+  reviewCount: number;
 }

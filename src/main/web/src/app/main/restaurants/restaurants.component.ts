@@ -27,7 +27,7 @@ export class RestaurantsComponent implements OnInit {
   }
 
   removeRestaurant(restaurant: RestaurantDTO) {
-    if (confirm(`Are you sure to delete restaurant: ${restaurant.name}?`)) {
+    if (confirm(`Are you sure you want to delete restaurant: ${restaurant.name}?`)) {
       this.restaurantService.deleteRestaurant(restaurant.id).subscribe(() => {
         this.initRestaurants();
         this.snackBar.open('Restaurant deleted successfully!', 'Close');

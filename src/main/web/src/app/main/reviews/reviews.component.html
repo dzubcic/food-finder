@@ -1,5 +1,5 @@
 <div class="wrapper">
-  <div class="review new" *ngIf="!hasPosted">
+  <div class="review" *ngIf="!hasPosted">
     <p>
       <span>{{ loggedIn?.firstName }} {{ loggedIn?.lastName }}</span>
       <br>{{ currentDateTime | date: 'dd.MM.YYYY. HH:mm:ss' }}
@@ -8,7 +8,7 @@
       <mat-label>New review</mat-label>
       <textarea rows="2" matInput [(ngModel)]="newReview"></textarea>
     </mat-form-field>
-    <button (click)="addReview()" mat-button mat-stroked-button color="primary">Post review</button>
+    <button [disabled]="!newReview" (click)="addReview()" mat-button mat-stroked-button color="primary">Post review</button>
   </div>
   <div class="review" *ngFor="let review of reviews">
     <p>

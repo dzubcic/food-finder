@@ -10,7 +10,7 @@ import java.util.List;
 @Repository
 public interface ReviewRepository extends JpaRepository<Review, Long> {
 
-    List<Review> findAllByRestaurant(Restaurant restaurant);
+    List<Review> findAllByRestaurantOrderByCreatedAtDesc(Restaurant restaurant);
 
     int countAllByRestaurant(Restaurant restaurant);
 

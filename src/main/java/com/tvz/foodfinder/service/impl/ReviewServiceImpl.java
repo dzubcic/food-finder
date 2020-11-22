@@ -24,7 +24,7 @@ public class ReviewServiceImpl implements ReviewService {
     @Override
     public List<Review> getAllReviews(Long restaurantId) {
         Restaurant restaurant = restaurantService.getRestaurant(restaurantId);
-        return reviewRepository.findAllByRestaurant(restaurant);
+        return reviewRepository.findAllByRestaurantOrderByCreatedAtDesc(restaurant);
     }
 
     @Override

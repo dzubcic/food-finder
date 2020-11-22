@@ -27,7 +27,7 @@ export class ReviewsComponent implements OnInit {
   ngOnInit(): void {
     setInterval(() => {
       this.currentDateTime = Date.now();
-    }, 1000);
+    }, 100);
     this.loggedIn = this.authService.loggedIn;
     this.reviewService.getAllReviews(this.restaurantId).subscribe(res => {
       this.reviews = res;
@@ -37,17 +37,21 @@ export class ReviewsComponent implements OnInit {
 
   addReview() {
     this.reviewService.addReview(this.restaurantId , this.newReview).subscribe(res => {
-      this.reviews.unshift(res);
+      this.newReview = '';
       this.hasPosted = true;
+      this.reviews.unshift(res);
       this.snackBar.open('Review successfully added!', 'Close');
     });
   }
 
   deleteReview(id: number) {
-    this.reviewService.deleteReview(id).subscribe(() => {
-      this.reviews = this.reviews.filter(r => r.id !== id);
-      this.snackBar.open('Review successfully deleted!', 'Close');
-    })
+    if (confirm('Are you sure you want to delete review?')) {
+      this.reviewService.deleteReview(id).subscribe(() => {
+        this.hasPosted = false;
+        this.reviews = this.reviews.filter(r => r.id !== id);
+        this.snackBar.open('Review successfully deleted!', 'Close');
+      });
+    }
   }
 
 }
