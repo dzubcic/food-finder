@@ -29,6 +29,7 @@ import {RestaurantService} from "./service/restaurant.service";
 import { RestaurantComponent } from './main/restaurants/restaurant/restaurant.component';
 import {MatCardModule} from "@angular/material/card";
 import { ReviewsComponent } from './main/reviews/reviews.component';
+import {MatAutocompleteModule} from "@angular/material/autocomplete";
 
 @NgModule({
   declarations: [
@@ -58,6 +59,7 @@ import { ReviewsComponent } from './main/reviews/reviews.component';
     MatOptionModule,
     MatSelectModule,
     MatCardModule,
+    MatAutocompleteModule,
     FormsModule
   ],
   providers: [

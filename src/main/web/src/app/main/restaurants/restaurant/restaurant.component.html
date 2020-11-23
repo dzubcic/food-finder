@@ -11,6 +11,7 @@
     <p>Contact: <b>{{ data.contact }}</b></p>
     <p>Added by: <b>{{ data.createdBy.firstName }} {{ data.createdBy.lastName }}</b></p>
     <p>Added at: <b>{{ data.createdAt | date: 'dd.MM.YYYY. HH:mm:ss' }}</b></p>
+    <p *ngIf="data.woltName && data.woltLink">Wolt link: <a target="_blank" [href]="data.woltLink">{{ data.woltName }}</a></p>
   </div>
 
   <app-reviews [restaurantId]="data.id"></app-reviews>

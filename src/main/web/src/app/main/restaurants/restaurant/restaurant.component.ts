@@ -1,14 +1,17 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {RestaurantService} from "../../../service/restaurant.service";
 import {Restaurant} from "../../../models/restaurant.model";
 import {ActivatedRoute} from "@angular/router";
+import {Subscription} from "rxjs";
 
 @Component({
   selector: 'app-restaurant',
   templateUrl: './restaurant.component.html',
   styleUrls: ['./restaurant.component.css']
 })
-export class RestaurantComponent implements OnInit {
+export class RestaurantComponent implements OnInit, OnDestroy {
+
+  subscription = new Subscription();
 
   data: Restaurant;
 
@@ -16,9 +19,13 @@ export class RestaurantComponent implements OnInit {
 
   ngOnInit(): void {
     const id = this.route.snapshot.params.id;
-    this.restaurantService.getRestaurant(id).subscribe(res => {
+    this.subscription = this.restaurantService.getRestaurant(id).subscribe(res => {
       this.data = res;
     });
+  }
+
+  ngOnDestroy(): void {
+    this.subscription.unsubscribe();
   }
 
 }

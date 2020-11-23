@@ -1,14 +1,17 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {MatSnackBar} from '@angular/material/snack-bar';
 import {AuthService} from "../../service/auth.service";
+import {Subscription} from "rxjs";
 
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.css']
 })
-export class RegisterComponent implements OnInit {
+export class RegisterComponent implements OnInit, OnDestroy {
+
+  subscription = new Subscription();
 
   constructor(private snackBar: MatSnackBar,
               private authService: AuthService) { }
@@ -23,7 +26,7 @@ export class RegisterComponent implements OnInit {
   ngOnInit(): void {}
 
   register() {
-    this.authService.register(this.registerForm.value).subscribe(
+    this.subscription = this.authService.register(this.registerForm.value).subscribe(
       () => {
         this.registerForm.reset();
         Object.keys(this.registerForm.controls).forEach(key => {
@@ -32,5 +35,9 @@ export class RegisterComponent implements OnInit {
         this.snackBar.open('Register success!', 'Close');
       },
       error => this.snackBar.open(error.error, 'Close'));
+  }
+
+  ngOnDestroy(): void {
+    this.subscription.unsubscribe();
   }
 }

@@ -44,6 +44,17 @@
       <input [placeholder]="'Click to upload' + (selectedFile ? ' other' : '') + ' image'" matInput readonly="readonly">
       <input hidden (change)="selectFile($event)" #fileInput type="file" id="file" accept="image/png, image/jpeg">
     </mat-form-field>
+    <mat-form-field>
+      <mat-label>Wolt link (optional)</mat-label>
+      <input matInput formControlName="woltLink" [matAutocomplete]="auto">
+      <mat-autocomplete #auto="matAutocomplete" [displayWith]="woltLinkDisplay" (optionSelected)="woltSelected = $event.option.value">
+        <mat-option *ngFor="let item of woltItems" [value]="item">
+          <img [src]="item.listimage">
+          <span>{{ item.name[0].value }}</span>
+          <span>{{ item.address }}</span>
+        </mat-option>
+      </mat-autocomplete>
+    </mat-form-field>
 
     <button color="primary" [disabled]="restaurantForm.invalid" type="submit" mat-button mat-stroked-button>Add</button>
   </form>

@@ -1,4 +1,12 @@
 {
+  "/api": {
+    "target": "https://restaurant-api.wolt.com",
+    "secure": true,
+    "changeOrigin": true,
+    "pathRewrite": {
+      "^/api": ""
+    }
+  },
   "/": {
     "target": "http://localhost:8080",
     "secure": false

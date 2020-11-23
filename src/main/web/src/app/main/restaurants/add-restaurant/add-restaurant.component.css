@@ -36,3 +36,32 @@ form {
 mat-form-field {
   width: 100%;
 }
+
+mat-option {
+  height: 80px;
+}
+
+mat-option img {
+  width: 70px;
+  height: 70px;
+  object-fit: cover;
+  margin-top: 20px;
+  border-radius: 40px;
+}
+
+mat-option span {
+  bottom: 0;
+  left: 100px;
+  position: absolute;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  max-width: 230px;
+
+}
+
+mat-option span:first-of-type {
+  top: 0;
+  font-size: 17px;
+  font-weight: 600;
+}

@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {HttpClient} from '@angular/common/http';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Observable} from "rxjs";
 import {Restaurant, RestaurantDTO} from "../models/restaurant.model";
 
@@ -25,6 +25,17 @@ export class RestaurantService {
 
   deleteRestaurant(id: number) {
     return this.http.delete(`${this.resourceUrl}/${id}`)
+  }
+
+  getWoltItems(q: string): Observable<any> {
+    const params = {
+      q,
+      sort: 'relevancy',
+      lat: '45.8081021057639',
+      lon: '15.9955787658691',
+      limit: '10'
+    };
+    return this.http.get('api/v1/search', { params });
   }
 
 }

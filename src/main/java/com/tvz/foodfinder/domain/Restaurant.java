@@ -53,6 +53,12 @@ public class Restaurant {
     @OneToMany(mappedBy = "restaurant", orphanRemoval = true)
     private List<Review> reviews;
 
+    @Column
+    private String woltName;
+
+    @Column
+    private String woltLink;
+
     @ManyToOne
     @CreatedBy
     @JoinColumn(name = "user_id")

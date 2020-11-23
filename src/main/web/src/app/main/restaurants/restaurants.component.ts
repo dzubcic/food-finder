@@ -1,9 +1,9 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {RestaurantService} from "../../service/restaurant.service";
 import {RestaurantDTO} from "../../models/restaurant.model";
 import {categories} from "../../models/categories.model";
 import {AuthService} from "../../service/auth.service";
-import {Observable} from "rxjs";
+import {Observable, Subscription} from "rxjs";
 import {User} from "../../models/user.model";
 import {MatSnackBar} from "@angular/material/snack-bar";
 
@@ -12,7 +12,9 @@ import {MatSnackBar} from "@angular/material/snack-bar";
   templateUrl: './restaurants.component.html',
   styleUrls: ['./restaurants.component.css']
 })
-export class RestaurantsComponent implements OnInit {
+export class RestaurantsComponent implements OnInit, OnDestroy {
+
+  subscription = new Subscription();
 
   categories = categories;
   loggedIn$: Observable<User>;
@@ -28,19 +30,23 @@ export class RestaurantsComponent implements OnInit {
 
   removeRestaurant(restaurant: RestaurantDTO) {
     if (confirm(`Are you sure you want to delete restaurant: ${restaurant.name}?`)) {
-      this.restaurantService.deleteRestaurant(restaurant.id).subscribe(() => {
+      this.subscription.add(this.restaurantService.deleteRestaurant(restaurant.id).subscribe(() => {
         this.initRestaurants();
         this.snackBar.open('Restaurant deleted successfully!', 'Close');
-      });
+      }));
     }
   }
 
   initRestaurants() {
     this.restaurants = new Map<string, RestaurantDTO[]>();
-    this.restaurantService.getAllRestaurants().subscribe((res: RestaurantDTO[]) => {
+    this.subscription.add(this.restaurantService.getAllRestaurants().subscribe((res: RestaurantDTO[]) => {
       res.forEach(r => {
         this.restaurants.has(r.category) ? this.restaurants.set(r.category, [...this.restaurants.get(r.category), r]) : this.restaurants.set(r.category, [r]);
       })
-    });
+    }));
+  }
+
+  ngOnDestroy(): void {
+    this.subscription.unsubscribe();
   }
 }

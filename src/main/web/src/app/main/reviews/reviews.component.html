@@ -6,7 +6,7 @@
     </p>
     <mat-form-field>
       <mat-label>New review</mat-label>
-      <textarea rows="2" matInput [(ngModel)]="newReview"></textarea>
+      <textarea maxlength="255" rows="2" matInput [(ngModel)]="newReview"></textarea>
     </mat-form-field>
     <button [disabled]="!newReview" (click)="addReview()" mat-button mat-stroked-button color="primary">Post review</button>
   </div>

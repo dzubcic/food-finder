@@ -10,6 +10,8 @@ export interface Restaurant {
   contact: string;
   workTime: string;
   category: string;
+  woltLink: string;
+  woltName: string;
   description: string;
 }
 
