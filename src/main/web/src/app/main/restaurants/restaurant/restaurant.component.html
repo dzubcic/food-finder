@@ -6,7 +6,7 @@
     <h1>{{ data.name }}</h1>
     <p>{{ data.description }}</p>
     <p>Category: <b>{{ data.category }}</b></p>
-    <p>Address: <b>{{ data.address }}</b></p>
+    <p>Address: <button mat-button mat-stroked-button color="primary" (click)="redirectToGoogleMaps(data.address)"><b>{{ data.address }}</b></button></p>
     <p>Working time: <b>{{ data.workTime }}</b></p>
     <p>Contact: <b>{{ data.contact }}</b></p>
     <p>Added by: <b>{{ data.createdBy.firstName }} {{ data.createdBy.lastName }}</b></p>

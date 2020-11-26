@@ -24,6 +24,10 @@ export class RestaurantComponent implements OnInit, OnDestroy {
     });
   }
 
+  redirectToGoogleMaps(address: string) {
+    window.open(`https://www.google.hr/maps/search/${address}`, '_blank');
+  }
+
   ngOnDestroy(): void {
     this.subscription.unsubscribe();
   }
